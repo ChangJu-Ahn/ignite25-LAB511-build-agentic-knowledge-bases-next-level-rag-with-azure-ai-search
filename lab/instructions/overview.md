@@ -171,10 +171,10 @@ This lab includes 8 progressive notebooks covering different knowledge base patt
 7. **Minimal Reasoning** - Speed-optimized retrieval
 8. **Medium Reasoning** - Balanced query decomposition
 
-**Start with `part1-basic-knowledge-base.ipynb`** in the `notebooks/` folder and progress through each notebook sequentially.
+Start with **part1-basic-knowledge-base.ipynb** in the **notebooks/** folder and progress through each notebook sequentially.
 
 ### Complete the Lab
 
-Work through each notebook in order, starting with `part1-basic-knowledge-base.ipynb`. Each notebook explores a different knowledge base pattern and builds on concepts from previous parts.
+Work through each notebook in order, starting with **part1-basic-knowledge-base.ipynb**. Each notebook explores a different knowledge base pattern and builds on concepts from previous parts.
 
 Once you've completed all 8 notebooks, select **Next** to review key takeaways and next steps.
