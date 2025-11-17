@@ -62,7 +62,7 @@ All required Azure services including **Azure AI Search with pre-indexed data** 
   - **hrdocs:** HR policies, employee handbook, role library, company overview
   - **healthdocs:** Health insurance plans, benefits options, coverage details
 - **Azure OpenAI** - Deployed models **gpt-4.1** for chat completion and answer synthesis and **text-embedding-3-large** for vector embeddings
-- **Pre-computed vectors** - All 384 documents are already vectorized and indexed
+- **Pre-computed vectors** - All 384 document chunks are already vectorized and indexed
 
 </details>
 
@@ -84,8 +84,8 @@ Let's confirm that the search indexes have been created successfully:
 3. In the Azure Portal search bar at the top, search for +++lab511-search+++ and select your AI Search service (it will look like *lab511-search-.....*).
 4. In the left navigation menu, select **Search management** > **Indexes**.
 5. You should see two indexes:
-   - **hrdocs** - Should show approximately 50 documents
-   - **healthdocs** - Should show approximately 334 documents
+   - **hrdocs** - Should show document count of 50
+   - **healthdocs** - Should show document count of 334
 
 If your indexes are present and populated, your environment is ready to use. You can now proceed to start with the Jupyter Notebooks.
 
