@@ -15,8 +15,8 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$repoRoot = "C:\Users\LabUser\Desktop\ignite25-LAB511-build-agentic-knowledge-bases-next-level-rag-with-azure-ai-search-main"
-$knowledgeFolder = Join-Path $repoRoot "notebook"
+$repoRoot = "C:\Users\LabUser\Desktop\ignite25-LAB511-private-dev"
+$knowledgeFolder = Join-Path $repoRoot "notebooks"
 $infraFolder = Join-Path $repoRoot "infra"
 
 # Create .env content

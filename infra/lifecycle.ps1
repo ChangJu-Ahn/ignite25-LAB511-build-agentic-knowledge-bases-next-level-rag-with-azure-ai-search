@@ -3,7 +3,7 @@
 # ===========================================
 
 # Set variables
-$repoUrl = "https://github.com/microsoft/ignite25-LAB511-build-agentic-knowledge-bases-next-level-rag-with-azure-ai-search"
+$repoUrl = "https://github.com/microsoft/ignite25-LAB511-private-dev"
 $zipUrl = "$repoUrl/archive/refs/heads/main.zip"
 $downloadPath = "$env:USERPROFILE\Downloads\LAB511.zip"
 $extractPath = "$env:USERPROFILE\Desktop"
@@ -20,6 +20,7 @@ if (!(Test-Path -Path $extractPath)) {
 Expand-Archive -Path $downloadPath -DestinationPath $extractPath -Force
 
 Write-Host "Repository downloaded and extracted to: $extractPath"
+
 
 $clientId = "@lab.CloudSubscription.AppId"
 $clientSecret = "@lab.CloudSubscription.AppSecret"
