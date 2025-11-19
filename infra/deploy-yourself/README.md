@@ -8,7 +8,7 @@ This folder contains resources for deploying the LAB511 Knowledge Base infrastru
 - **Azure CLI** installed and configured ([Install guide](https://learn.microsoft.com/cli/azure/install-azure-cli))
 - **Python 3.10+** installed
 - **Git** (to clone this repository)
-- **VS Code** with Jupyter extension (recommended)
+- **VS Code** or **GitHub Codespaces** with Jupyter extension (recommended)
 
 ### Required Azure Permissions
 
@@ -41,20 +41,25 @@ az login
 
 ⏱️ **Estimated time: 10-15 minutes**
 
+For both options, you must first login to Azure:
+
+```shell
+az login
+```
+
 #### Option A: Using the Deployment Script
 
-**Windows (PowerShell):**
-```powershell
-cd infra/deploy-yourself
-.\deploy.ps1 -ResourceGroupName "rg-lab511" -Location "westcentralus"
-```
+  **Windows (PowerShell):**
+  ```powershell
+  cd infra/deploy-yourself
+  .\deploy.ps1 -ResourceGroupName "rg-lab511" -Location "westcentralus"
+  ```
 
-**Linux/macOS (Bash):**
-```bash
-cd infra/deploy-yourself
-chmod +x deploy.sh
-./deploy.sh -g "rg-lab511" -l "westcentralus"
-```
+  **Linux/macOS (Bash):**
+  ```bash
+  cd infra/deploy-yourself
+  ./deploy.sh -g "rg-lab511" -l "westcentralus"
+  ```
 
 #### Option B: Manual Deployment
 
@@ -86,7 +91,6 @@ After the infrastructure is deployed, run the setup script:
 
 **Linux/macOS (Bash):**
 ```bash
-chmod +x setup-environment.sh
 ./setup-environment.sh -g "rg-lab511"
 ```
 
