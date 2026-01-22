@@ -1,40 +1,40 @@
 
 
-These instructions are for participants of the **instructor-led** Workshop "Build Agentic Knowledge Bases: Next-Level RAG with Azure AI Search" at Microsoft Ignite 2025.  Register to attend in a city near you at [Microsoft Ignite](https://ignite.microsoft.com/).
+이 지침은 Microsoft Ignite 2025에서 열리는 **강사 주도** 워크숍 "Build Agentic Knowledge Bases: Next-Level RAG with Azure AI Search"의 참가자를 위한 것입니다. 가까운 도시에서 참석하려면 [Microsoft Ignite](https://ignite.microsoft.com/)에서 등록하세요.
 
-## Lab Overview
+## 랩 개요
 
-In this hands-on lab, you’ll build a Knowledge Base using agentic RAG, the next evolution of retrieval in Azure AI Search. Connect your agentic retrieval engine to your data through smart source selection across multiple indexes and storage systems. Learn how to enhance planning using natural language guidance and generate grounded responses with citations or extractive answers tailored to your use case. By the end, you’ll have a fully functional Knowledge Base responds over enterprise data.
+이 실습 랩에서는 Azure AI Search의 차세대 검색 기술인 에이전틱 RAG를 사용하여 지식 베이스를 구축합니다. 여러 인덱스와 스토리지 시스템에서 스마트 소스 선택을 통해 에이전틱 검색 엔진을 데이터에 연결합니다. 자연어 가이드를 사용하여 계획을 향상시키고 사용 사례에 맞는 인용 또는 추출 답변을 포함한 근거 있는 응답을 생성하는 방법을 배웁니다. 실습이 끝나면 엔터프라이즈 데이터에 대해 응답하는 완전한 기능의 지식 베이스를 갖추게 됩니다.
 
-## Pre-Requisites
+## 사전 요구 사항
 
-## Prerequisites
+## 사전 요구 사항
 
-To get the most out of this lab, you should have a basic understanding of the following:
+이 랩을 최대한 활용하려면 다음에 대한 기본적인 이해가 필요합니다:
 
-- **Python and Jupyter Notebooks** – You will write and run code cells directly inside a Jupyter environment.  
-- **Azure Fundamentals** – Familiarity with Azure services and concepts such as resource groups, storage accounts, and authentication.  
-- **Retrieval-Augmented Generation (RAG)** – A general understanding of how LLMs use external data for grounding will help you better follow the agentic retrieval flow.  
-- **Azure AI Search and OpenAI** – Basic knowledge of what these services do (indexing, querying, embeddings, completions) is helpful but not required.
+- **Python 및 Jupyter 노트북** – Jupyter 환경 내에서 직접 코드 셀을 작성하고 실행합니다.  
+- **Azure 기본 사항** – 리소스 그룹, 스토리지 계정, 인증과 같은 Azure 서비스 및 개념에 대한 친숙함.  
+- **검색 증강 생성(RAG)** – LLM이 외부 데이터를 근거로 사용하는 방법에 대한 일반적인 이해는 에이전틱 검색 흐름을 더 잘 따라가는 데 도움이 됩니다.  
+- **Azure AI Search 및 OpenAI** – 이러한 서비스가 수행하는 작업(인덱싱, 쿼리, 임베딩, 완성)에 대한 기본 지식이 도움이 되지만 필수는 아닙니다.
 
 > [!NOTE]  
-> You do **not** need to provision any Azure services or deploy infrastructure manually for this lab. All required resources including Azure AI Search, OpenAI deployments, and data sources — are pre-created and ready to use.
+> 이 랩을 위해 Azure 서비스를 프로비저닝하거나 인프라를 수동으로 배포할 필요가 **없습니다**. Azure AI Search, OpenAI 배포 및 데이터 소스를 포함한 모든 필수 리소스가 미리 생성되어 사용할 준비가 되어 있습니다.
 
-## Get Started
+## 시작하기
 
-To begin, follow the instructions in the **lab511-agentic-knowledge-bases.ipynb** notebook provided in your lab environment.  
+시작하려면 랩 환경에서 제공되는 **lab511-agentic-knowledge-bases.ipynb** 노트북의 지침을 따르세요.  
 
-This notebook contains all the guided content, code examples, and explanations you’ll need to build and understand a fully functional Agentic Knowledge Base. Make sure to run each cell in order and read the accompanying explanations carefully. The notebook is designed to be a complete, step-by-step learning experience.
+이 노트북에는 완전한 기능의 에이전틱 지식 베이스를 구축하고 이해하는 데 필요한 모든 가이드 콘텐츠, 코드 예제 및 설명이 포함되어 있습니다. 각 셀을 순서대로 실행하고 함께 제공되는 설명을 주의 깊게 읽으십시오. 노트북은 완전한 단계별 학습 경험이 되도록 설계되었습니다.
 
-Once you’ve completed the notebook and explored all the included capabilities, return to this page and select **Next >** to view the wrap-up and summary section.
+노트북을 완료하고 포함된 모든 기능을 탐색한 후 이 페이지로 돌아와서 **다음 >**을 선택하여 마무리 및 요약 섹션을 확인하세요.
 
-## Discussions
+## 토론
 
-If you’d like to contribute, raise an issue, or provide feedback, please open an issue in this repo.
+기여하거나, 문제를 제기하거나, 피드백을 제공하려면 이 리포지토리에서 이슈를 열어주세요.
 
-If you enjoyed this workshop, consider giving the repository a ⭐ on GitHub and sharing it with your peers or community.
+이 워크숍이 마음에 들었다면 GitHub에서 리포지토리에 ⭐를 주고 동료나 커뮤니티와 공유하는 것을 고려해 보세요.
 
-## Source Code
+## 소스 코드
 
-The source code for this session is available in the [notebook folder](../notebook) of this repository.  
-You can use it as a reference for future projects, extend it with additional capabilities, or integrate it into your own solutions built on Azure AI Search and agentic retrieval.
+이 세션의 소스 코드는 이 리포지토리의 [notebook 폴더](../notebook)에서 확인할 수 있습니다.  
+향후 프로젝트의 참조로 사용하거나, 추가 기능으로 확장하거나, Azure AI Search 및 에이전틱 검색을 기반으로 구축된 자체 솔루션에 통합할 수 있습니다.

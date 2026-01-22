@@ -1,35 +1,35 @@
-## Before You Begin
+## 시작하기 전에
 
 <details>
-<summary><strong>🔑 Lab Credentials (Click to expand when you need to sign in)</strong></summary>
+<summary><strong>🔑 랩 자격 증명 (로그인이 필요할 때 클릭하여 펼치기)</strong></summary>
 
-In any point of time during the lab, if you need to sign in to the virtual machine (Windows) or any Azure or Microsoft 365 apps (M365 Copilot, SharePoint, Teams etc.), use the credentials provided below.
+랩 진행 중 언제든지 가상 머신(Windows) 또는 Azure 또는 Microsoft 365 앱(M365 Copilot, SharePoint, Teams 등)에 로그인해야 하는 경우 아래 제공된 자격 증명을 사용하세요.
 
-### Sign into Virtual Machine (Windows)
+### 가상 머신(Windows)에 로그인
 
-If you need to sign in the virtual machine, use the following credentials:
+가상 머신에 로그인해야 하는 경우 다음 자격 증명을 사용하세요:
 
-- **User name**: +++@lab.VirtualMachine(Win11-Pro-Base).Username+++  
-- **Password**: +++@lab.VirtualMachine(Win11-Pro-Base).Password+++
+- **사용자 이름**: +++@lab.VirtualMachine(Win11-Pro-Base).Username+++  
+- **암호**: +++@lab.VirtualMachine(Win11-Pro-Base).Password+++
 
-### Sign into Azure & Microsoft 365
+### Azure 및 Microsoft 365에 로그인
 
-If you need to sign in to any Azure or Microsoft 365 apps, use the following credentials:
+Azure 또는 Microsoft 365 앱에 로그인해야 하는 경우 다음 자격 증명을 사용하세요:
 
-- **Username**: +++@lab.CloudPortalCredential(User1).Username+++  
-- **Temporary Access Pass**: +++@lab.CloudPortalCredential(User1).AccessToken+++
+- **사용자 이름**: +++@lab.CloudPortalCredential(User1).Username+++  
+- **임시 액세스 패스**: +++@lab.CloudPortalCredential(User1).AccessToken+++
 
 </details>
 
-## Overview
+## 개요
 
-In this hands-on lab, you'll build a knowledge base using agentic retrieval in Azure AI Search. Unlike traditional search or basic RAG systems that simply return documents, an agentic knowledge base plans how and where to search, chooses the most relevant knowledge sources, and synthesizes grounded, citation-backed responses tailored to the user's intent.
+이 실습 랩에서는 Azure AI Search의 에이전틱 검색을 사용하여 지식 베이스를 구축합니다. 단순히 문서를 반환하는 기존 검색 또는 기본 RAG 시스템과 달리, 에이전틱 지식 베이스는 검색 방법과 위치를 계획하고, 가장 관련성 높은 지식 소스를 선택하며, 사용자의 의도에 맞춘 근거 있는 인용 기반 응답을 합성합니다.
 
-Through 8 progressive exercises, you'll explore multiple retrieval patterns across different data sources (search indexes, SharePoint, web, blob storage), experiment with answer synthesis strategies, and optimize performance by adjusting reasoning effort levels.
+8개의 점진적인 연습을 통해 다양한 데이터 소스(검색 인덱스, SharePoint, 웹, Blob 스토리지)에서 여러 검색 패턴을 탐색하고, 답변 합성 전략을 실험하며, 추론 노력 수준을 조정하여 성능을 최적화합니다.
 
-## Getting Started
+## 시작하기
 
-Follow the steps below to set up your environment and begin the lab.
+아래 단계에 따라 환경을 설정하고 랩을 시작하세요.
 
 ### Sign into Windows
 
@@ -56,125 +56,125 @@ Open Visual Studio Code and select **File > Open Folder**. Then navigate to Desk
 All required Azure services including **Azure AI Search with pre-indexed data** and **Azure OpenAI deployments** have already been provisioned for you.
 
 <details>
-<summary><strong>📋 What's Pre-Configured (Click to expand for details)</strong></summary>
+<summary><strong>📋 사전 구성된 내용 (자세한 내용을 보려면 클릭하여 펼치기)</strong></summary>
 
-- **Azure AI Search** - Standard tier with two pre-created indexes:
-  - **hrdocs:** HR policies, employee handbook, role library, company overview
-  - **healthdocs:** Health insurance plans, benefits options, coverage details
-- **Azure OpenAI** - Deployed models **gpt-4.1** for chat completion and answer synthesis and **text-embedding-3-large** for vector embeddings
-- **Pre-computed vectors** - All 384 document chunks are already vectorized and indexed
+- **Azure AI Search** - 두 개의 사전 생성된 인덱스가 있는 표준 계층:
+  - **hrdocs:** HR 정책, 직원 핸드북, 역할 라이브러리, 회사 개요
+  - **healthdocs:** 건강 보험 계획, 혜택 옵션, 보장 세부 정보
+- **Azure OpenAI** - 채팅 완성 및 답변 합성을 위한 **gpt-4.1** 모델과 벡터 임베딩을 위한 **text-embedding-3-large** 모델 배포됨
+- **사전 계산된 벡터** - 모든 384개의 문서 청크가 이미 벡터화되고 인덱싱됨
 
 </details>
 
-#### Verify Environment Variables
+#### 환경 변수 확인
 
-1. Open the **.env** file under the main project folder.  
-2. Verify that it includes the key environment variables *AZURE_SEARCH_SERVICE_ENDPOINT*, *AZURE_SEARCH_ADMIN_KEY*, *AZURE_OPENAI_ENDPOINT*, and *AZURE_OPENAI_KEY*.
+1. 메인 프로젝트 폴더 아래의 **.env** 파일을 엽니다.  
+2. 주요 환경 변수 *AZURE_SEARCH_SERVICE_ENDPOINT*, *AZURE_SEARCH_ADMIN_KEY*, *AZURE_OPENAI_ENDPOINT*, *AZURE_OPENAI_KEY*가 포함되어 있는지 확인합니다.
 
-If these variables are present, proceed to verify the indexes in Azure Portal.
+이러한 변수가 있으면 Azure Portal에서 인덱스 확인을 진행하세요.
 
-#### Verify Indexes in Azure Portal
+#### Azure Portal에서 인덱스 확인
 
-Let's confirm that the search indexes have been created successfully:
+검색 인덱스가 성공적으로 생성되었는지 확인해 보겠습니다:
 
-1. Open a web browser and navigate to the +++https://portal.azure.com+++.
-2. Sign in using your lab credentials:
-    - **Username**: +++@lab.CloudPortalCredential(User1).Username+++  
-    - **Temporary Access Pass**: +++@lab.CloudPortalCredential(User1).AccessToken+++
-3. In the Azure Portal search bar at the top, search for +++lab511-search+++ and select your AI Search service (it will look like *lab511-search-.....*).
-4. In the left navigation menu, select **Search management** > **Indexes**.
-5. You should see two indexes:
-   - **hrdocs** - Should show document count of 50
-   - **healthdocs** - Should show document count of 334
+1. 웹 브라우저를 열고 +++https://portal.azure.com+++으로 이동합니다.
+2. 랩 자격 증명을 사용하여 로그인합니다:
+    - **사용자 이름**: +++@lab.CloudPortalCredential(User1).Username+++  
+    - **임시 액세스 패스**: +++@lab.CloudPortalCredential(User1).AccessToken+++
+3. 상단의 Azure Portal 검색 바에서 +++lab511-search+++를 검색하고 AI Search 서비스를 선택합니다(*lab511-search-.....*와 같이 보일 것입니다).
+4. 왼쪽 탐색 메뉴에서 **검색 관리** > **인덱스**를 선택합니다.
+5. 두 개의 인덱스가 표시되어야 합니다:
+   - **hrdocs** - 문서 수 50개 표시
+   - **healthdocs** - 문서 수 334개 표시
 
-If your indexes are present and populated, your environment is ready to use. You can now proceed to start with the Jupyter Notebooks.
+인덱스가 존재하고 채워져 있으면 환경을 사용할 준비가 된 것입니다. 이제 Jupyter 노트북을 시작할 수 있습니다.
 
 <details>
-<summary><strong>⚠️ Troubleshooting ⚠️ Click to expand if environment setup fails!</strong></summary>
+<summary><strong>⚠️ 문제 해결 ⚠️ 환경 설정이 실패하면 클릭하여 펼치기!</strong></summary>
 
-If the automated environment setup fails, follow these steps to configure your environment manually:
+자동 환경 설정이 실패하면 다음 단계에 따라 환경을 수동으로 구성하세요:
 
-**Step 1: Configure Environment Variables**
+**1단계: 환경 변수 구성**
 
-1. In Visual Studio Code, locate the **env.sample** file in the project root folder.
-2. Rename **env.sample** to **.env**.
-3. Gather the required credentials from Azure Portal:
+1. Visual Studio Code에서 프로젝트 루트 폴더의 **env.sample** 파일을 찾습니다.
+2. **env.sample**의 이름을 **.env**로 변경합니다.
+3. Azure Portal에서 필요한 자격 증명을 수집합니다:
 
-   **For Azure AI Search:**
-   - Navigate to **Azure Portal** > Search for +++lab511-search+++ > Select your AI Search service
-   - Go to **Settings** > **Keys**
-   - Copy the **URL** (endpoint) and **Primary admin key**
+   **Azure AI Search의 경우:**
+   - **Azure Portal**로 이동 > +++lab511-search+++ 검색 > AI Search 서비스 선택
+   - **설정** > **키**로 이동
+   - **URL**(엔드포인트) 및 **기본 관리 키** 복사
 
-   **For Azure OpenAI:**
-   - Navigate to **Azure Portal** > Search for +++lab511-openai+++ > Select your OpenAI service
-   - Go to **Keys and Endpoint**
-   - Copy the **Endpoint** and **KEY 1**
+   **Azure OpenAI의 경우:**
+   - **Azure Portal**로 이동 > +++lab511-openai+++ 검색 > OpenAI 서비스 선택
+   - **키 및 엔드포인트**로 이동
+   - **엔드포인트** 및 **키 1** 복사
 
-   **For Azure Storage:**
-   - Navigate to **Azure Portal** > Search for +++lab511st+++ > Select your Storage Account
-   - Go to **Security + networking** > **Access keys**
-   - Copy the **Connection string** from key1
+   **Azure Storage의 경우:**
+   - **Azure Portal**로 이동 > +++lab511st+++ 검색 > Storage 계정 선택
+   - **보안 + 네트워킹** > **액세스 키**로 이동
+   - key1에서 **연결 문자열** 복사
 
-   **For Azure AI Services:**
-   - Navigate to **Azure Portal** > Search for +++lab511-ai-services+++ > Select your AI Services
-   - Go to **Keys and Endpoint**
-   - Copy the **Endpoint** and **KEY 1**
+   **Azure AI Services의 경우:**
+   - **Azure Portal**로 이동 > +++lab511-ai-services+++ 검색 > AI Services 선택
+   - **키 및 엔드포인트**로 이동
+   - **엔드포인트** 및 **키 1** 복사
 
-4. Update the **.env** file with your values (replace the placeholder values).
+4. **.env** 파일을 자신의 값으로 업데이트합니다(자리 표시자 값 교체).
 
-**Step 2: Create Python Virtual Environment**
+**2단계: Python 가상 환경 생성**
 
-1. Open the first notebook **notebooks/part1-basic-knowledge-base.ipynb**.
-2. Run the first code cell and when prompted to select a kernel, choose **Create New Environment**.
-3. Select **Venv** and then select the **requirements.txt** file in the **notebooks/** folder.
-4. Wait for the virtual environment to be created.
+1. 첫 번째 노트북 **notebooks/part1-basic-knowledge-base.ipynb**을 엽니다.
+2. 첫 번째 코드 셀을 실행하고 커널 선택 메시지가 표시되면 **새 환경 만들기**를 선택합니다.
+3. **Venv**를 선택한 다음 **notebooks/** 폴더의 **requirements.txt** 파일을 선택합니다.
+4. 가상 환경이 생성될 때까지 기다립니다.
 
-**Step 3: Run Knowledge Base Setup Script**
+**3단계: 지식 베이스 설정 스크립트 실행**
 
-1. Open a new terminal in Visual Studio Code (**Terminal** > **New Terminal**).
-2. Activate the virtual environment by running:
+1. Visual Studio Code에서 새 터미널을 엽니다(**터미널** > **새 터미널**).
+2. 다음을 실행하여 가상 환경을 활성화합니다:
 
    +++.\.venv\Scripts\Activate.ps1+++
 
-3. Run the knowledge base creation script:
+3. 지식 베이스 생성 스크립트를 실행합니다:
 
    +++python infra/create-knowledge.py+++
 
-4. Wait for the script to complete. It will create and populate the required indexes. Check **Azure AI Search > Search management > Indexes** to verify that the indexes **hrdocs** and **healthdocs** are created and populated with documents.
+4. 스크립트가 완료될 때까지 기다립니다. 필요한 인덱스를 생성하고 채웁니다. **Azure AI Search > 검색 관리 > 인덱스**를 확인하여 인덱스 **hrdocs** 및 **healthdocs**가 생성되고 문서로 채워졌는지 확인합니다.
 
-**Step 4: Verify GPT-4.1 Model Deployment**
+**4단계: GPT-4.1 모델 배포 확인**
 
-If you encounter errors related to the GPT model when running notebook cells:
+노트북 셀을 실행할 때 GPT 모델과 관련된 오류가 발생하는 경우:
 
-1. Navigate to +++https://portal.azure.com+++ > Select your OpenAI service.
-2. Select **Go to Azure AI Foundry**.
-3. Select **Deployments**.
-4. Verify that **gpt-4.1** is deployed.
-5. If missing, click **Create new deployment**:
-   - Select **gpt-4.1** model
-   - Set **Standard** deployment type
-   - Make sure your existing OpenAI resource is selected
-   - Click **Deploy**
+1. +++https://portal.azure.com+++으로 이동 > OpenAI 서비스를 선택합니다.
+2. **Azure AI Foundry로 이동**을 선택합니다.
+3. **배포**를 선택합니다.
+4. **gpt-4.1**이 배포되었는지 확인합니다.
+5. 없는 경우 **새 배포 만들기**를 클릭합니다:
+   - **gpt-4.1** 모델 선택
+   - **표준** 배포 유형 설정
+   - 기존 OpenAI 리소스가 선택되었는지 확인
+   - **배포** 클릭
 
 </details>
 
-### Start with Jupyter Notebooks
+### Jupyter 노트북 시작하기
 
-This lab includes 8 progressive notebooks covering different knowledge base patterns:
+이 랩에는 다양한 지식 베이스 패턴을 다루는 8개의 점진적인 노트북이 포함되어 있습니다:
 
-1. **Basic Knowledge Base** - Connect indexed data, configure Azure OpenAI, generate cited answers
-2. **Multiple Knowledge Sources** - Query across indexes with custom instructions
-3. **SharePoint Integration** - Real-time document retrieval from SharePoint
-4. **Web Sources** - Combine internal and external content
-5. **Blob Storage** - Upload and index with minimal vs. semantic strategies
-6. **Combined Sources** - Unified querying across multiple source types
-7. **Minimal Reasoning** - Speed-optimized retrieval
-8. **Medium Reasoning** - Balanced query decomposition
+1. **기본 지식 베이스** - 인덱싱된 데이터 연결, Azure OpenAI 구성, 인용된 답변 생성
+2. **다중 지식 소스** - 사용자 지정 지침으로 인덱스 간 쿼리
+3. **SharePoint 통합** - SharePoint에서 실시간 문서 검색
+4. **웹 소스** - 내부 및 외부 콘텐츠 결합
+5. **Blob Storage** - 최소 vs. 시맨틱 전략으로 업로드 및 인덱싱
+6. **결합된 소스** - 여러 소스 유형에서 통합 쿼리
+7. **최소 추론** - 속도 최적화 검색
+8. **중간 추론** - 균형 잡힌 쿼리 분해
 
-Start with **part1-basic-knowledge-base.ipynb** in the **notebooks/** folder and progress through each notebook sequentially.
+**notebooks/** 폴더의 **part1-basic-knowledge-base.ipynb**로 시작하여 각 노트북을 순차적으로 진행하세요.
 
-### Complete the Lab
+### 랩 완료
 
-Work through each notebook in order, starting with **part1-basic-knowledge-base.ipynb**. Each notebook explores a different knowledge base pattern and builds on concepts from previous parts.
+**part1-basic-knowledge-base.ipynb**부터 시작하여 각 노트북을 순서대로 작업하세요. 각 노트북은 다른 지식 베이스 패턴을 탐색하고 이전 부분의 개념을 기반으로 합니다.
 
-Once you've completed all 8 notebooks, select **Next** to review key takeaways and next steps.
+8개의 노트북을 모두 완료한 후 **다음**을 선택하여 주요 내용과 다음 단계를 검토하세요.
