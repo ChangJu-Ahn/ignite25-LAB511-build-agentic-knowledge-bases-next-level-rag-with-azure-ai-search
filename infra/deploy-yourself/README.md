@@ -52,20 +52,20 @@ az login
   **Windows (PowerShell):**
   ```powershell
   cd infra/deploy-yourself
-  .\deploy.ps1 -ResourceGroupName "LAB511-ResourceGroup" -Location "westcentralus"
+  .\deploy.ps1 -ResourceGroupName "LAB511-ResourceGroup" -Location "eastus2"
   ```
 
   **Linux/macOS (Bash):**
   ```bash
   cd infra/deploy-yourself
-  ./deploy.sh -g "LAB511-ResourceGroup" -l "westcentralus"
+  ./deploy.sh -g "LAB511-ResourceGroup" -l "eastus2"
   ```
 
 #### 옵션 B: 수동 배포
 
 ```bash
 # 리소스 그룹 생성
-az group create --name **LAB511-ResourceGroup** --location westcentralus
+az group create --name **LAB511-ResourceGroup** --location eastus2
 
 # 사용자 개체 ID 가져오기
 USER_OBJECT_ID=$(az ad signed-in-user show --query id -o tsv)
