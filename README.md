@@ -9,6 +9,16 @@
 [![Microsoft Foundry Discord](https://dcbadge.limes.pink/api/server/nTYy5BXMWG)](https://aka.ms/MicrosoftFoundry-Ignite25)
 [![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=adff2f&logoColor=fff)](https://aka.ms/MicrosoftFoundryForum-Ignite25)
 
+### 들어가기 앞서 데모 링크
+> https://azure-ai-search-knowledge-retrieval.vercel.app/
+
+Agentic Retrieval은 사용자의 질문을 분해하거나, 여러 소스에서 답변을 찾았는데 만족하지 못할 경우 자동으로 프로세스를 반복합니다.   
+Foundry IQ는 이러한 영역을 별도의 지식 layer로 분리하여 Agentic Retrieval을 Reasoning Effort 기반으로 레벨을 조절하며 동작합니다.   
+<img src="img/image.png"/>   
+<img src="img/image-1.png" alt="demo screenshot" width="800"/>   
+<img src="img/image-2.png" alt="demo screenshot" width="800"/>   
+<img src="img/image-3.png" alt="demo screenshot" width="800"/>   
+
 ### 세션 설명
 
 이 실습 랩에서는 Azure AI Search의 차세대 검색 기술인 에이전틱 RAG를 사용하여 지식 베이스를 구축합니다. 여러 인덱스와 스토리지 시스템에서 스마트 소스 선택을 통해 에이전틱 검색 엔진을 데이터에 연결합니다. 자연어 가이드를 사용하여 계획을 향상시키고 사용 사례에 맞는 인용 또는 추출 답변을 포함한 근거 있는 응답을 생성하는 방법을 배웁니다. 실습이 끝나면 엔터프라이즈 데이터에 대해 응답하는 완전한 기능의 에이전틱 지식 베이스를 갖추게 됩니다.
@@ -80,6 +90,19 @@
 - Azure Storage (문서 저장)
 - Azure AI Services (문서 처리)
 
+#### 🌍 권장 Azure 리전
+
+모든 기능(AI enrichment/Skillset, Agentic Retrieval, GPT-4.1, text-embedding-3-large)을 지원하는 권장 리전:
+
+| 리전 | 추천도 | 특징 |
+|------|--------|------|
+| **East US 2** | ⭐⭐⭐ 최우선 추천 | 모든 기능 지원, Availability Zones, 안정적 |
+| **Sweden Central** | ⭐⭐ | 최신 모델 포함, 유럽 사용자 적합 |
+| **North Central US** | ⭐⭐ | 완전한 기능 지원, 미국 중부 |
+| **West US** | ⭐⭐ | 모든 기능 지원, 서부 해안 |
+
+> ⚠️ **중요**: 모든 Azure 리소스(AI Search, OpenAI, Storage, AI Services)를 **같은 리전**에 배포하세요.
+
 **⏱️ 소요 시간: 약 20-25분**
 
 👉 **[상세 배포 가이드 보기](./infra/deploy-yourself/README.md)**
@@ -89,6 +112,32 @@
 환경 설정과 Azure 배포가 완료되면 `notebooks/` 폴더의 Jupyter 노트북을 순서대로 실행하세요.
 
 **⏱️ 소요 시간: 약 60-90분**
+
+## 🧹 리소스 정리
+
+랩을 완료한 후 Azure 비용이 계속 발생하지 않도록 배포된 리소스를 삭제하세요.
+
+### Azure Portal을 통한 삭제
+
+1. [Azure Portal](https://portal.azure.com)에 로그인
+2. 좌측 메뉴에서 **리소스 그룹** 선택
+3. 배포 시 생성한 리소스 그룹 찾기 (예: `rg-lab511-xxxxx`)
+4. 리소스 그룹 선택 후 **리소스 그룹 삭제** 클릭
+5. 리소스 그룹 이름을 입력하여 삭제 확인
+
+### Azure CLI를 통한 삭제
+
+터미널에서 다음 명령어를 실행하세요:
+
+```bash
+# 리소스 그룹 이름을 변수로 설정
+RESOURCE_GROUP="rg-lab511-xxxxx"  # 실제 리소스 그룹 이름으로 변경
+
+# 리소스 그룹 삭제
+az group delete --name $RESOURCE_GROUP --yes --no-wait
+```
+
+> ⚠️ **주의**: 리소스 그룹을 삭제하면 그룹 내의 모든 리소스(AI Search, OpenAI, Storage 등)가 영구적으로 삭제됩니다.
 
 ### 📚 리소스 및 다음 단계
 
