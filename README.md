@@ -5,9 +5,11 @@
 # [Microsoft Ignite 2025](https://ignite.microsoft.com)
 
 ## 🔥LAB511: Build Agentic Knowledge Bases: Next-Level RAG with Azure AI Search
-
 [![Microsoft Foundry Discord](https://dcbadge.limes.pink/api/server/nTYy5BXMWG)](https://aka.ms/MicrosoftFoundry-Ignite25)
 [![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=adff2f&logoColor=fff)](https://aka.ms/MicrosoftFoundryForum-Ignite25)
+
+> Foundry AI의 강력한 Agentic Retrieval은 고도화된 Azure AI Search와 함께합니다. AI Asearch 레포는 아래를 참고하세요.
+> https://github.com/ChangJu-Ahn/azure_aisearch_workshophttps://github.com/ChangJu-Ahn/azure_aisearch_workshop 
 
 ### 들어가기 앞서 데모 링크
 > https://azure-ai-search-knowledge-retrieval.vercel.app/
@@ -194,3 +196,4 @@ CLA를 사용하는 모든 리포지토리에서 한 번만 수행하면 됩니�
 상표 또는 로고의 승인된 사용은 [Microsoft 상표 및 브랜드 지침](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general)을
 따라야 합니다. 이 프로젝트의 수정된 버전에서 Microsoft 상표 또는 로고를 사용하면 혼란을 일으키거나 Microsoft의 후원을 암시해서는 안 됩니다.
 제3자 상표 또는 로고의 사용은 해당 제3자의 정책에 따릅니다.
+
